@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const res = await fetch(`${API_BASE_URL}/api/projects/all/`);
+        const res = await fetch(`${API_BASE_URL}/api/projects/view_all/`);
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const projects = await res.json();
         
