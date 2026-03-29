@@ -127,7 +127,7 @@
                         <a href="#blog" class="text-secondary hover:text-white transition-colors">./Blogs</a>
                         <a href="#contact" class="text-secondary hover:text-white transition-colors">./Contact</a>
                         <!-- LOGIN BUTTON (No Navigation, White Background) -->
-                        <a href="http://portfolio-backend-env.eba-7mp6mbh4.us-east-1.elasticbeanstalk.com/admin/" 
+                        <a href="http://127.0.0.1:8000/admin/" 
                            id="desktop-admin-login" 
                            class="px-5 py-2 rounded bg-white text-black font-bold hover:bg-gray-200 transition-all shadow-lg" 
                            target="_blank">
@@ -156,7 +156,7 @@
                 <a href="#blog" class="block px-4 py-3 rounded-md hover:bg-white/5" onclick="toggleMobileMenu()">./Blogs</a>
                 <a href="#contact" class="block px-4 py-3 rounded-md hover:bg-white/5" onclick="toggleMobileMenu()">./Contact</a>
                 <div class="pt-4 mt-2 border-t border-white/10">
-                    <a href="http://portfolio-backend-env.eba-7mp6mbh4.us-east-1.elasticbeanstalk.com/admin/" 
+                    <a href="http://127.0.0.1:8000/admin/" 
    id="mobile-admin-login" 
    class="block w-full text-center px-4 py-3 rounded-md text-black font-bold bg-white" 
    target="_blank">
@@ -169,9 +169,9 @@
 
     <main class="relative z-10 pt-16">
 
-        <!-- ============================================ -->
+        <!-- ============================================ --> -->
         <!-- HERO SECTION (3 SLIDES) -->
-        <!-- ============================================ -->
+        <!-- ============================================ --> -->
         <section id="hero" class="h-[90vh] min-h-[600px] relative overflow-hidden flex items-center justify-center">
             <div class="w-full max-w-7xl mx-auto px-6 h-full relative">
 
@@ -263,9 +263,9 @@
             </div>
         </section>
 
-        <!-- ============================================ -->
+        <!-- ============================================ --> -->
         <!-- ABOUT SECTION -->
-        <!-- ============================================ -->
+        <!-- ============================================ --> -->
         <section id="about" class="py-24 relative bg-surface/30">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="mb-12 text-center">
@@ -291,9 +291,9 @@
             </div>
         </section>
 
-        <!-- ============================================ -->
+        <!-- ============================================ --> -->
         <!-- EXPERIENCE SECTION (Auto Alternating) -->
-        <!-- ============================================ -->
+        <!-- ============================================ --> -->
         <section id="experience" class="py-24 relative">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="mb-16 text-center">
@@ -373,9 +373,9 @@
             </div>
         </section>
 
-        <!-- ============================================ -->
+        <!-- ============================================ --> -->
         <!-- PROJECTS SECTION (Horizontal Carousel) -->
-        <!-- ============================================ -->
+        <!-- ============================================ --> -->
         <section id="projects" class="py-24 relative bg-bg">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-end mb-12">
@@ -458,50 +458,6 @@
         </section>
 
         <!-- ============================================ -->
-        <!-- BLOG SECTION (Wrapping Grid) -->
-        <!-- ============================================
-        <section id="blog" class="py-24 bg-surface/30">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-sm font-mono text-secondary mb-2">04. /INSIGHTS</h2>
-                <h3 class="text-3xl font-bold text-white mb-12">Technical Logs</h3>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8
-                    <!-- BLOG 1 --
-                    <a href="blog-debugging-cloudfront.html" class="glass-panel p-6 rounded-xl flex flex-col h-full group hover:border-white/30 cursor-pointer">
-                        <span class="text-xs font-mono text-gray-400 mb-2 border-b border-white/10 pb-2 w-max">CLOUD</span>
-                        <h4 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">Debugging CloudFront SSL</h4>
-                        <p class="text-sm text-muted flex-1 mb-4">How I resolved certificate validation issues by switching DNS to Route 53.</p>
-                        <span class="text-xs text-white underline decoration-white/30 group-hover:decoration-white transition-all">Read Article</span>
-                    </a>
-
-                    <!-- BLOG 2 --
-                    <a href="blog-automating-ec2.html" class="glass-panel p-6 rounded-xl flex flex-col h-full group hover:border-white/30 cursor-pointer">
-                        <span class="text-xs font-mono text-gray-400 mb-2 border-b border-white/10 pb-2 w-max">DEVOPS</span>
-                        <h4 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">Automating EC2 Updates</h4>
-                        <p class="text-sm text-muted flex-1 mb-4">Setting up cron jobs for auto-updates and managing permissions via Bash.</p>
-                        <span class="text-xs text-white underline decoration-white/30 group-hover:decoration-white transition-all">Read Article</span>
-                    </a>
-
-                    <!-- BLOG 3 --
-                     <a href="blog-optimizing-react.html" class="glass-panel p-6 rounded-xl flex flex-col h-full group hover:border-white/30 cursor-pointer">
-                        <span class="text-xs font-mono text-gray-400 mb-2 border-b border-white/10 pb-2 w-max">WEB</span>
-                        <h4 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">Optimizing React Builds</h4>
-                        <p class="text-sm text-muted flex-1 mb-4">Reducing bundle size and improving load times with code splitting.</p>
-                        <span class="text-xs text-white underline decoration-white/30 group-hover:decoration-white transition-all">Read Article</span>
-                    </a>
-
-                    <!-- BLOG 4 (Fake, for testing wrap) -
-                    <a href="blog-fake-log.html" class="glass-panel p-6 rounded-xl flex flex-col h-full group hover:border-white/30 cursor-pointer">
-                        <span class="text-xs font-mono text-gray-400 mb-2 border-b border-white/10 pb-2 w-max">TEST</span>
-                        <h4 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">Fake Technical Log</h4>
-                        <p class="text-sm text-muted flex-1 mb-4">This fake log tests the grid wrapping functionality. It should appear on the next row if the screen allows.</p>
-                        <span class="text-xs text-white underline decoration-white/30 group-hover:decoration-white transition-all">Read Article</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-       -->
         <!-- CV SECTION (Live Preview) -->
         <!-- ============================================ -->
         <section id="cv" class="py-24 border-y border-white/5 bg-[#1a1a1a]">
@@ -593,6 +549,51 @@
                             <li>AWS Certified Solutions Architecture (in progress/planned)</li>
                         </ul>
                     </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============================================ -->
+        <!-- BLOG SECTION (Wrapping Grid) -->
+        <!-- ============================================ -->
+        <section id="blog" class="py-24 bg-surface/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-sm font-mono text-secondary mb-2">04. /INSIGHTS</h2>
+                <h3 class="text-3xl font-bold text-white mb-12">Technical Logs</h3>
+
+                <div id="blogs-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- BLOG 1 -->
+                    <a href="blog-debugging-cloudfront.html" class="glass-panel p-6 rounded-xl flex flex-col h-full group hover:border-white/30 cursor-pointer">
+                        <span class="text-xs font-mono text-gray-400 mb-2 border-b border-white/10 pb-2 w-max">CLOUD</span>
+                        <h4 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">Debugging CloudFront SSL</h4>
+                        <p class="text-sm text-muted flex-1 mb-4">How I resolved certificate validation issues by switching DNS to Route 53.</p>
+                        <span class="text-xs text-white underline decoration-white/30 group-hover:decoration-white transition-all">Read Article</span>
+                    </a>
+
+                    <!-- BLOG 2 -->
+                    <a href="blog-automating-ec2.html" class="glass-panel p-6 rounded-xl flex flex-col h-full group hover:border-white/30 cursor-pointer">
+                        <span class="text-xs font-mono text-gray-400 mb-2 border-b border-white/10 pb-2 w-max">DEVOPS</span>
+                        <h4 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">Automating EC2 Updates</h4>
+                        <p class="text-sm text-muted flex-1 mb-4">Setting up cron jobs for auto-updates and managing permissions via Bash.</p>
+                        <span class="text-xs text-white underline decoration-white/30 group-hover:decoration-white transition-all">Read Article</span>
+                    </a>
+
+                    <!-- BLOG 3 -->
+                     <a href="blog-optimizing-react.html" class="glass-panel p-6 rounded-xl flex flex-col h-full group hover:border-white/30 cursor-pointer">
+                        <span class="text-xs font-mono text-gray-400 mb-2 border-b border-white/10 pb-2 w-max">WEB</span>
+                        <h4 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">Optimizing React Builds</h4>
+                        <p class="text-sm text-muted flex-1 mb-4">Reducing bundle size and improving load times with code splitting.</p>
+                        <span class="text-xs text-white underline decoration-white/30 group-hover:decoration-white transition-all">Read Article</span>
+                    </a>
+
+                    <!-- BLOG 4 (Fake, for testing wrap) -->
+                    <a href="blog-fake-log.html" class="glass-panel p-6 rounded-xl flex flex-col h-full group hover:border-white/30 cursor-pointer">
+                        <span class="text-xs font-mono text-gray-400 mb-2 border-b border-white/10 pb-2 w-max">TEST</span>
+                        <h4 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">Fake Technical Log</h4>
+                        <p class="text-sm text-muted flex-1 mb-4">This fake log tests the grid wrapping functionality. It should appear on the next row if the screen allows.</p>
+                        <span class="text-xs text-white underline decoration-white/30 group-hover:decoration-white transition-all">Read Article</span>
+                    </a>
                 </div>
             </div>
         </section>
