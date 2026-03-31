@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
+    // --- FETCH PROJECTS & EXPERIENCE ---
     try {
         const res = await fetch(`${API_BASE_URL}/api/projects/view_all/`);
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
@@ -19,12 +20,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (line) expContainer.appendChild(line);
         }
 
-        // LOGIC:
-        // INTERVIEW NOTE: We filter the data from the API endpoint based on the 'category' field.
-        // 'personal' projects go to the Horizontal Carousel, and 'experience' goes to the Vertical Timeline.
         projects.forEach(item => {
             if (item.category === 'personal' && projContainer) {
-                // Project HTML 
                 const projectHTML = `
                     <a href="project-detail.html?id=${item.id}" class="glass-panel rounded-2xl overflow-hidden flex flex-col group cursor-pointer min-w-[320px] md:min-w-[400px] snap-center">
                         <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
@@ -42,8 +39,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 `;
                 projContainer.insertAdjacentHTML('beforeend', projectHTML);
             } else if (item.category === 'experience' && expContainer) {
-                // Experience HTML using alternating logic
-                // Ensure alternating behavior implicitly happens via CSS `experience-item` and `:nth-child`
                 const expDate = item.created_at ? new Date(item.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) : 'Recent';
                 const expHTML = `
                     <div class="experience-item relative flex flex-col gap-8 items-center group">
@@ -67,9 +62,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 expContainer.insertAdjacentHTML('beforeend', expHTML);
             }
         });
-        
-        // --- ADD BLOGS DYNAMIC BEHAVIOR ---
-        const blogRes = await fetch(`${API_BASE_URL}/api/blogs/`);
+    } catch (e) {
+        console.error('Error fetching projects dynamic data:', e);
+    }
+
+    // --- FETCH BLOGS ---
+    try {
+        const blogRes = await fetch(`${API_BASE_URL}/api/blogs/view_all/`);
         if (blogRes.ok) {
             const blogs = await blogRes.json();
             const blogContainer = document.getElementById('blogs-container');
@@ -81,7 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <a href="blog-detail.html?id=${blog.id}" class="glass-panel p-6 rounded-xl flex flex-col h-full group hover:border-white/30 cursor-pointer">
                             <span class="text-xs font-mono text-gray-400 mb-2 border-b border-white/10 pb-2 w-max">BLOG</span>
                             <h4 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">${blog.title}</h4>
-                            <p class="text-sm text-muted flex-1 mb-4">By ${blog.author}</p>
+                            <p class="text-sm text-muted flex-1 mb-4">By ${blog.author || 'Saad Waseem'}</p>
                             <span class="text-xs text-white underline decoration-white/30 group-hover:decoration-white transition-all">Read Article</span>
                         </a>
                     `;
@@ -89,8 +88,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 });
             }
         }
-
     } catch (e) {
-        console.error('Error fetching dynamic data:', e);
+        console.error('Error fetching blogs dynamic data:', e);
     }
 });

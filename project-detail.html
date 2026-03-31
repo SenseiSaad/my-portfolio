@@ -59,13 +59,10 @@
             }
 
             try {
-                // Determine if personal or experience to route safely, but let's assume /api/projects/${id}/ 
-                // Alternatively, view_all endpoint would allow us to filter by ID
-                const res = await fetch(`${API_BASE_URL}/api/projects/view_all/`);
+                const res = await fetch(`${API_BASE_URL}/api/projects/view_one/${projectId}/`);
                 if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
                 
-                const projects = await res.json();
-                const project = projects.find(p => p.id == projectId);
+                const project = await res.json();
                 
                 if (!project) {
                     throw new Error('Project not found in results.');
@@ -76,7 +73,7 @@
                 
                 if (project.image) {
                     const bgImg = document.getElementById('project-bg-image');
-                    bgImg.src = project.image;
+                    bgImg.src = project.image.startsWith('http') ? project.image : API_BASE_URL + project.image;
                     bgImg.classList.remove('hidden');
                 }
                 

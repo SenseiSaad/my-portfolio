@@ -55,14 +55,15 @@
 
             try {
                 // Fetch specific blog data from Django API
-                const res = await fetch(`${API_BASE_URL}/api/blogs/${blogId}/`);
+                const res = await fetch(`${API_BASE_URL}/api/blogs/view_one/${blogId}/`);
                 if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
                 
                 const blog = await res.json();
                 
                 // Inject data into HTML
                 document.getElementById('blog-title').textContent = blog.title;
-                document.getElementById('blog-author').textContent = `By ${blog.author} | ${new Date(blog.created_at).toLocaleDateString()}`;
+                const blogDate = blog.created_at ? new Date(blog.created_at).toLocaleDateString() : 'Recent';
+                document.getElementById('blog-author').textContent = `By ${blog.author || 'Saad Waseem'} | ${blogDate}`;
                 
                 // Content might be rich text or plain text with newlines
                 document.getElementById('blog-content').innerHTML = `<p>${blog.content.replace(/\n/g, '<br>')}</p>`;
