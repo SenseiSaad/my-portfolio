@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileAdminLink = document.getElementById('mobile-admin-login');
     
     // Direct link to the secure Django Admin
-    const adminUrl = `${API_BASE_URL}/admin/`; 
+    const adminUrl = `https://api.slancer.site/admin/login/?next=/admin/`; 
     
     if (desktopAdminLink) {
         desktopAdminLink.href = adminUrl;
