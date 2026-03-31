@@ -317,15 +317,10 @@
                         <h2 class="text-sm font-mono text-secondary mb-2">03. /PROJECTS</h2>
                         <h3 class="text-3xl font-bold text-white">Featured Deployments</h3>
                     </div>
-                    <!-- Navigation Arrows -->
-                    <div class="flex gap-2">
-                        <button onclick="scrollProjects(-1)" class="w-10 h-10 rounded-full border border-white/10 text-white hover:bg-white hover:text-black transition flex items-center justify-center"><i class="fa-solid fa-arrow-left"></i></button>
-                        <button onclick="scrollProjects(1)" class="w-10 h-10 rounded-full border border-white/10 text-white hover:bg-white hover:text-black transition flex items-center justify-center"><i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
                 </div>
 
-                <!-- Carousel Container -->
-                <div id="projects-container" class="flex gap-8 overflow-x-auto hide-scrollbar pb-8 snap-x snap-mandatory" style="scroll-behavior: smooth;">
+                <!-- Projects Grid -->
+                <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
                 </div>
             </div>
         </section>

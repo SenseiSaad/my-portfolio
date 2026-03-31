@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             } else {
                 personalProjects.forEach(item => {
                     const projectHTML = `
-                        <a href="project-detail.html?id=${item.id}" class="glass-panel rounded-2xl overflow-hidden flex flex-col group cursor-pointer min-w-[320px] md:min-w-[400px] snap-center">
+                        <a href="project-detail.html?id=${item.id}" class="glass-panel rounded-2xl overflow-hidden flex flex-col group cursor-pointer w-full">
                             <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
                                 <img src="${(item.image ? (item.image.startsWith('http') ? item.image : API_BASE_URL + item.image) : null) || 'https://placehold.co/600x400/9a3412/FFF?text=Project'}" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute top-4 right-4 bg-black/60 backdrop-blur px-3 py-1 rounded text-xs font-mono text-white border border-white/20">${item.tech_stack || 'Tech'}</div>
