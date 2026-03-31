@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             } else if (item.category === 'experience' && expContainer) {
                 // Experience HTML using alternating logic
                 // Ensure alternating behavior implicitly happens via CSS `experience-item` and `:nth-child`
-                const expDate = new Date(item.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+                const expDate = item.created_at ? new Date(item.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) : 'Recent';
                 const expHTML = `
                     <div class="experience-item relative flex flex-col gap-8 items-center group">
                         <div class="md:w-1/2 w-full pl-12 md:pl-0 exp-content">
