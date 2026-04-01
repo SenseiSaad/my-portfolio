@@ -29,9 +29,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (personalProjects.length === 0) {
                 projContainer.innerHTML = '<div class="w-full text-center py-12 text-gray-400 font-mono">No projects found.</div>';
             } else {
-                personalProjects.forEach(item => {
+                personalProjects.forEach((item, index) => {
+                    const isHidden = index >= 3 ? 'hidden extra-project' : '';
                     const projectHTML = `
-                        <a href="project-detail.html?id=${item.id}" class="glass-panel rounded-2xl overflow-hidden flex flex-col group cursor-pointer w-full">
+                        <a href="project-detail.html?id=${item.id}" class="glass-panel rounded-2xl overflow-hidden flex flex-col group cursor-pointer w-full ${isHidden}">
                             <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
                                 <img src="${(item.image ? (item.image.startsWith('http') ? item.image : API_BASE_URL + item.image) : null) || 'https://placehold.co/600x400/9a3412/FFF?text=Project'}" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute top-4 right-4 bg-black/60 backdrop-blur px-3 py-1 rounded text-xs font-mono text-white border border-white/20">${item.tech_stack || 'Tech'}</div>
@@ -47,6 +48,25 @@ document.addEventListener('DOMContentLoaded', async () => {
                     `;
                     projContainer.insertAdjacentHTML('beforeend', projectHTML);
                 });
+                
+                // Add "Show More" button if there are more than 3 projects
+                if (personalProjects.length > 3) {
+                    const showMoreBtnHTML = `
+                        <div class="col-span-full flex justify-center mt-6 w-full" id="show-more-container">
+                            <button id="show-more-btn" class="px-8 py-3 bg-white/10 border border-white/20 rounded-full text-white text-sm hover:bg-white hover:text-black transition-all font-bold cursor-pointer">
+                                Show More Projects
+                            </button>
+                        </div>
+                    `;
+                    // Insert button after the grid container in DOM
+                    projContainer.insertAdjacentHTML('afterend', showMoreBtnHTML);
+                    
+                    document.getElementById('show-more-btn').addEventListener('click', (e) => {
+                        const extraProjects = document.querySelectorAll('.extra-project');
+                        extraProjects.forEach(p => p.classList.remove('hidden'));
+                        e.target.parentElement.style.display = 'none'; // hide the button container
+                    });
+                }
             }
         }
 
