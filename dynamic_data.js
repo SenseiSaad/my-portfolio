@@ -33,11 +33,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const isHidden = index >= 3 ? 'hidden extra-project' : '';
                     const projectHTML = `
                         <a href="project-detail.html?id=${item.id}" class="glass-panel rounded-2xl overflow-hidden flex flex-col group cursor-pointer w-full ${isHidden}">
-                            <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
-                                <img src="${(item.image ? (item.image.startsWith('http') ? item.image : API_BASE_URL + item.image) : null) || 'https://placehold.co/600x400/9a3412/FFF?text=Project'}" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
-                                <div class="absolute top-4 right-4 bg-black/60 backdrop-blur px-3 py-1 rounded text-xs font-mono text-white border border-white/20">${item.tech_stack || 'Tech'}</div>
-                            </div>
                             <div class="p-6 flex flex-col flex-1">
+                                <div class="mb-4">
+                                    <span class="bg-white/10 px-3 py-1 rounded text-xs font-mono text-white border border-white/20">${item.tech_stack || 'Tech'}</span>
+                                </div>
                                 <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">${item.title}</h4>
                                 <p class="text-sm text-gray-400 mb-4 flex-1 leading-relaxed">
                                     ${item.description}
@@ -91,11 +90,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 <a href="${item.live_link || '#'}" class="inline-block px-6 py-2 border border-white/20 rounded-full text-white text-xs hover:bg-white hover:text-black transition-all font-bold" target="_blank">View Details</a>
                             </div>
                             <div class="absolute left-4 md:left-1/2 -translate-x-[9px] w-5 h-5 bg-black border-4 border-white rounded-full z-10 mt-2"></div>
-                            <div class="md:w-1/2 w-full pl-12 md:pl-0 flex exp-image opacity-80 group-hover:opacity-100 transition duration-500">
-                                <div class="w-full max-w-md aspect-video bg-gray-800 rounded-xl overflow-hidden border border-white/10 shadow-2xl">
-                                    <img src="${(item.image ? (item.image.startsWith('http') ? item.image : API_BASE_URL + item.image) : null) || 'https://placehold.co/600x400/be185d/FFF?text=Image'}" class="w-full h-full object-cover">
-                                </div>
-                            </div>
                         </div>
                     `;
                     expContainer.insertAdjacentHTML('beforeend', expHTML);

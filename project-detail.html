@@ -71,12 +71,6 @@
                 document.getElementById('project-title').textContent = project.title;
                 document.getElementById('project-tech').textContent = project.tech_stack || 'PROJECT';
                 
-                if (project.image) {
-                    const bgImg = document.getElementById('project-bg-image');
-                    bgImg.src = project.image.startsWith('http') ? project.image : API_BASE_URL + project.image;
-                    bgImg.classList.remove('hidden');
-                }
-                
                 if (project.live_link) {
                     const liveLink = document.getElementById('project-live-link');
                     liveLink.href = project.live_link;
