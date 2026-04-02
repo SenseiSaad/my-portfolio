@@ -30,15 +30,21 @@ document.addEventListener('DOMContentLoaded', async () => {
                 projContainer.innerHTML = '<div class="w-full text-center py-12 text-gray-400 font-mono">No projects found.</div>';
             } else {
                 personalProjects.forEach((item, index) => {
+                    // Split tech stack into nice little pill badges
+                    const techStackHTML = (item.tech_stack || 'Tech').split(',').slice(0, 3).map(tech => 
+                        `<span class="bg-white/10 px-3 py-1 rounded-full text-xs font-mono text-white border border-white/20 whitespace-nowrap">${tech.trim()}</span>`
+                    ).join('');
+
                     const projectHTML = `
                         <a href="project-detail.html?id=${item.id}" class="glass-panel rounded-2xl overflow-hidden flex flex-col group cursor-pointer w-full">
                             <div class="p-6 flex flex-col flex-1">
-                                <div class="mb-4">
-                                    <span class="bg-white/10 px-3 py-1 rounded text-xs font-mono text-white border border-white/20">${item.tech_stack || 'Tech'}</span>
+                                <div class="mb-4 flex flex-wrap gap-2 overflow-hidden max-h-[30px]">
+                                    ${techStackHTML}
+                                    ${(item.tech_stack || '').split(',').length > 3 ? `<span class="text-xs text-gray-500 self-center">...</span>` : ''}
                                 </div>
-                                <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">${item.title}</h4>
-                                <p class="text-sm text-gray-400 mb-4 flex-1 leading-relaxed">
-                                    ${item.description}
+                                <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors line-clamp-1">${item.title}</h4>
+                                <p class="text-sm text-gray-400 mb-4 flex-1 leading-relaxed line-clamp-3">
+                                    ${item.short_description || item.description}
                                 </p>
                                 <span class="mt-auto text-xs font-bold text-white uppercase tracking-widest border-b border-transparent group-hover:border-white w-max transition-all">View Case Study &rarr;</span>
                             </div>
@@ -64,8 +70,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 <h4 class="text-2xl font-bold text-white">${item.title}</h4>
                                 <p class="text-sm text-primary font-mono mb-3">Work | ${expDate}</p>
                                 <div class="bg-white/5 p-6 rounded-xl border border-white/5 mb-4 hover:bg-white/10 transition duration-300">
-                                    <p class="text-gray-300 text-sm leading-relaxed mb-2"><strong class="text-white">What I did:</strong> ${item.description}</p>
-                                    <p class="text-gray-400 text-sm leading-relaxed"><strong class="text-white">How:</strong> ${item.tech_stack || ''}</p>
+                                    <p class="text-gray-300 text-sm leading-relaxed mb-2 line-clamp-3"><strong class="text-white">What I did:</strong> ${item.short_description || item.description}</p>
+                                    <p class="text-gray-400 text-sm leading-relaxed truncate"><strong class="text-white">How:</strong> ${item.tech_stack || ''}</p>
                                 </div>
                                 <a href="${item.live_link || '#'}" class="inline-block px-6 py-2 border border-white/20 rounded-full text-white text-xs hover:bg-white hover:text-black transition-all font-bold" target="_blank">View Details</a>
                             </div>
