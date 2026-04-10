@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Post | Slancer</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -65,8 +66,9 @@
                 const blogDate = blog.created_at ? new Date(blog.created_at).toLocaleDateString() : 'Recent';
                 document.getElementById('blog-author').textContent = `By ${blog.author || 'Saad Waseem'} | ${blogDate}`;
                 
-                // Content might be rich text or plain text with newlines
-                document.getElementById('blog-content').innerHTML = `<p>${blog.content.replace(/\n/g, '<br>')}</p>`;
+                // Parse the content as Markdown
+                const parsedContent = marked.parse(blog.content);
+                document.getElementById('blog-content').innerHTML = parsedContent;
             } catch (error) {
                 console.error('Error fetching blog:', error);
                 document.getElementById('blog-title').textContent = 'Error Loading Blog';
