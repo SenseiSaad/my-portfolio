@@ -4,12 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Post | Slancer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body { background-color: #0f0f0f; color: #D4D4D4; }
+        .prose :where(h1, h2, h3, h4, h5, h6) {
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+            letter-spacing: 0.05em;
+        }
+        .prose :where(strong) {
+            color: #ffffff;
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen relative">
@@ -22,7 +34,7 @@
         </div>
     </nav>
     <div class="relative z-10 pt-16">
-        <div id="hero-section" class="relative w-full h-[40vh] min-h-[300px] mb-12 flex items-center justify-center overflow-hidden border-b border-white/10" style="background-color:#064e3b;">
+        <div id="hero-section" class="relative w-full h-[40vh] min-h-[300px] mb-12 flex items-center justify-center overflow-hidden border-b border-white/10 bg-gray-800">
             <div class="absolute inset-0 hero-overlay pointer-events-none"></div>
             <div class="relative z-10 max-w-7xl mx-auto px-6 w-full pt-8 text-center">
                 <span class="inline-block px-3 py-1 rounded bg-white/10 border border-white/20 text-white text-xs font-mono mb-6 tracking-widest backdrop-blur-md">BLOG</span>
